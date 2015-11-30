@@ -1,11 +1,13 @@
-//Want to create an object constructor for creating article
-var Article = function(rawData){
-  this.title = rawData.title;
-  this.category = rawData.category;
-  this.author = rawData.author;
-  this.authorUrl = rawData.authorUrl;
-  this.publishedOn = rawData.publishedOn;
-  this.body = rawData.body;
+var collectedEntries = [];
+
+var Article = function(title, category, author, authorUrl, publishedOn, body){
+  this.title = title;
+  this.category = category;
+  this.author = author;
+  this.authorUrl = authorUrl;
+  this.publishedOn = publishedOn;
+  this.body = body;
+  collectedEntries.push(this)
 }
 
 Article.prototype.toHTML = function() {
