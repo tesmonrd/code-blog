@@ -1,6 +1,7 @@
 var collectedEntries = [];
+var blog = {};
 
-var Article = function(title, category, author, authorUrl, publishedOn, body){
+function Article() {
   this.title = title;
   this.category = category;
   this.author = author;
@@ -11,10 +12,18 @@ var Article = function(title, category, author, authorUrl, publishedOn, body){
 }
 
 Article.prototype.toHTML = function() {
-  return "<article>" +
-  "<h1>" + this.title + "</h1>" +
-  "<h5>" + this.publishedOn + "</h5>" +
-  "<li>" + this.author + " " + this.authorUrl+ "</li>" +
-  "<p>" + this.body + "</p>"
-  "</article>"
+  return '<article>' +
+  '<h1>' + this.title + '</h1>' +
+  '<h5>' + this.publishedOn + '</h5>' +
+  '<li>' + this.author + ' ' + this.authorUrl+ '</li>' +
+  '<p>' + this.body + '</p>'
+  '</article>'
 };
+
+var buildComment = function () {
+  for(i=0; i < blog.rawData.length; i++) {
+    return blog.rawData[i] = new Article;
+  }
+};
+
+buildComment();
