@@ -1,13 +1,14 @@
 var collectedEntries = [];
 var blog = {};
+blog.rawData = [];
 
-function Article() {
-  this.title = title;
-  this.category = category;
-  this.author = author;
-  this.authorUrl = authorUrl;
-  this.publishedOn = publishedOn;
-  this.body = body;
+var Article = function(blog) {
+  this.title = blog.title;
+  this.category = blog.category;
+  this.author = blog.author;
+  this.authorUrl = blog.authorUrl;
+  this.publishedOn = blog.publishedOn;
+  this.body = blog.body;
   collectedEntries.push(this);
 }
 
@@ -21,9 +22,8 @@ Article.prototype.toHTML = function() {
 };
 
 var buildComment = function () {
-  for(i=0; i < blog.rawData.length; i++) {
-    return blog.rawData[i] = new Article;
+  for(var i = 0; i < blog.rawData.length; i++) {
+    new Article(blog.rawData[i]);
   }
 };
-
 buildComment();
