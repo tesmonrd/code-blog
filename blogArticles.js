@@ -1,4 +1,4 @@
-var entries = [
+blog.rawData = [
   {
     title:       'Bacon Ipsum',
     category:    'food',
