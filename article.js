@@ -1,9 +1,11 @@
 //Want to create an object constructor for creating article
-var Article = function(props){
-  this.author = props.author;
-  this.title = props.title;
-  this.body = props.body;
-  this.publishedOn = props.publishedOn;
+var Article = function(rawData){
+  this.title = rawData.title;
+  this.category = rawData.category;
+  this.author = rawData.author;
+  this.authorUrl = rawData.authorUrl;
+  this.publishedOn = rawData.publishedOn;
+  this.body = rawData.body;
 }
 
 Article.prototype.toHTML = function() {
