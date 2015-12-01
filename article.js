@@ -15,11 +15,11 @@ var Article = function(blog) {
 Article.prototype.toHTML = function() {
   $template = $('#template').clone();
   $template.removeAttr('id');
-  $template.find('.title').text(this.title);
-  $template.find('.author').text(this.author);
-  $template.find('.authorUrl').text(this.authorUrl);
-  $template.find('.category').text(this.category);
-  $template.find('.publishedOn').text(this.publishedOn);
+  $template.find('.title').html(this.title);
+  $template.find('.author').html(this.author);
+  $template.find('.author').attr('href', this.authorUrl);
+  $template.find('.category').html(this.category);
+  $template.find('.publishedOn').html(this.publishedOn);
   $template.find('.body').html(this.body);
   $('main').append($template);
 };
