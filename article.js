@@ -1,6 +1,7 @@
 var collectedEntries = [];
 var blog = {};
 blog.rawData = [];
+var $template = $('#template').clone();
 
 var Article = function(blog) {
   this.title = blog.title;
@@ -13,12 +14,19 @@ var Article = function(blog) {
 }
 
 Article.prototype.toHTML = function() {
-  return '<article>' +
-  '<h1>' + this.title + '</h1>' +
-  '<h5>' + this.publishedOn + '</h5>' +
-  '<li>' + this.author + ' ' + this.authorUrl+ '</li>' +
-  '<p>' + this.body + '</p>'
-  '</article>'
+  $('.title').text(this.title);
+  $('.author').text(this.author);
+  $('.authorUrl').text(this.authorUrl);
+  $('.category').text(this.category);
+  $('.publishedOn').text(this.publishedOn);
+  $('.body').text(this.body);
+  $
+  // return '<article>' +
+  // '<h2>' + this.title + '</h2>' +
+  // '<h5>' + this.publishedOn + '</h5>' +
+  // '<li>' + this.author + ' ' + this.authorUrl+ '</li>' +
+  // this.body +
+  // '</article>'
 };
 
 var buildComment = function () {
@@ -26,4 +34,3 @@ var buildComment = function () {
     new Article(blog.rawData[i]);
   }
 };
-buildComment();
