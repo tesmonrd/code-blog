@@ -20,13 +20,17 @@ Article.prototype.toHTML = function() {
   $template.find('.authorUrl').text(this.authorUrl);
   $template.find('.category').text(this.category);
   $template.find('.publishedOn').text(this.publishedOn);
-  $template.find('.body').text(this.body);
-  $('main').prepend($template);
+  $template.find('.body').html(this.body);
+  $('main').append($template);
 };
 
-// blog.sortRawData = function() {
-//   blog.rawData
-// };
+var sortRawData = function() {
+  blog.rawData.sort(function(a, b) {
+    if(a.publishedOn > b.publishedOn) {return -1;}
+    if(a.publishedOn < b.publishedOn) {return 1;}
+    return 0;
+  });
+};
 
 var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
