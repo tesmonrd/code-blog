@@ -1,36 +1,37 @@
 <!-- Steps to complete, apply template to articles and change template each time -->
 <html>
   <head>
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" type="text/CSS" href="style.css">
     <title>Rick's Blog</title>
   </head>
   <body>
     <header>
-      <h1>Rick Tesmond's Blog</h1>
-      <nav>
+      <h1 class="title">Rick Tesmond's Blog</h1>
+      <nav class="main-nav">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Connect</li>
+            <li><a href="index.html"><button><img class="tab" src="images/Home.png">Home</button></a></li>
+            <li><a href="about.html"><button><img class="tab" src="images/About.png">About</button></a></li>
+            <li><button><img class="tab" src="images/Linkedin.png">Linkedin</button></li>
+            <li><button><img class="tab" src="images/Github.png">Github</button></li>
           </ul>
       </nav>
     </header>
     <main>
       <article id="template">
-        <h2 class="title">Title</h2>
-        <h3 class="author"><a class="authorUrl" href="authorUrl">Author</a></h3>
-        <h5 class="category">Category</h5>
-        <h5 class="publishedOn">Date</h5>
-        <p class="body">Content</p>
+        <h1 class="title"></h1>
+        <h5 class="category"></h5>
+        <h5> <em>Written by: </em><a href='#' class="author"></a><em> on </em></h5>
+        <p class="body"></p>
+        <a href="#" class="read-on">Read on -></a> <hr/>
       </article>
     </main>
     <footer>
 
     </footer>
   </body>
-  <script type="text/javascript" src="article.js"></script>
-  <script type="text/javascript" src="blogArticles.js"></script>
-  <script type="text/javascript" src="index.js"></script>
+  <script src="article.js"></script>
+  <script src="blogArticles.js"></script>
+  <script src="events.js"></script>
+  <script src="index.js"></script>
 </html>
