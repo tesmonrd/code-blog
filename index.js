@@ -1,1 +1,2 @@
+sortRawData();
 buildComment();
