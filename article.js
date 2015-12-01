@@ -1,7 +1,6 @@
 var collectedEntries = [];
 var blog = {};
 blog.rawData = [];
-var $template = $('#template').clone();
 
 var Article = function(blog) {
   this.title = blog.title;
@@ -14,23 +13,24 @@ var Article = function(blog) {
 }
 
 Article.prototype.toHTML = function() {
-  $('.title').text(this.title);
-  $('.author').text(this.author);
-  $('.authorUrl').text(this.authorUrl);
-  $('.category').text(this.category);
-  $('.publishedOn').text(this.publishedOn);
-  $('.body').text(this.body);
-  $
-  // return '<article>' +
-  // '<h2>' + this.title + '</h2>' +
-  // '<h5>' + this.publishedOn + '</h5>' +
-  // '<li>' + this.author + ' ' + this.authorUrl+ '</li>' +
-  // this.body +
-  // '</article>'
+  $template = $('#template').clone();
+  $template.removeAttr('id');
+  $template.find('.title').text(this.title);
+  $template.find('.author').text(this.author);
+  $template.find('.authorUrl').text(this.authorUrl);
+  $template.find('.category').text(this.category);
+  $template.find('.publishedOn').text(this.publishedOn);
+  $template.find('.body').text(this.body);
+  $('main').prepend($template);
 };
+
+// blog.sortRawData = function() {
+//   blog.rawData
+// };
 
 var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
-    new Article(blog.rawData[i]);
+    var blogPost = new Article(blog.rawData[i]);
+    blogPost.toHTML();
   }
 };
