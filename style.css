@@ -1,15 +1,49 @@
-h1 {
+body {
+  background-image: url("images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+header {
+  background-color: #baddad;
+  max-width:100%;
+  float:bottom;
+}
+header>h1{
   text-align: center;
 }
-
-nav {
+li {
+  list-style-type: none;
+  display: inline-block;
 }
 
-.comments {
-  margin: 5%;
+button{
+  max-width: 100%;
+  margin: 0%;
+
+}
+.tab {
+	display: inline-block;
+  margin:2%;
+	width: 2em;
+	height: 2em;
+	fill: currentColor;
 }
 
-img {
+main {
+  background-color: rgba(255,255,255,.7);
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 20px;
+  max-width:90%;
+}
+
+main>h1 {
+  text-align: left;
+}
+
+
+
+article>img {
   height: 200px;
   width: 200px;
   margin: 3%;
