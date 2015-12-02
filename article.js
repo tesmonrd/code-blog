@@ -21,7 +21,10 @@ Article.prototype.toHTML = function() {
   $template.find('.category').html(this.category);
   $template.find('.publishedOn').html(this.publishedOn);
   $template.find('.body').html(this.body);
+  
   $('main').append($template);
+  $('.filterAuthor').find('.author').html(this.author);
+  $('.filter').append('.filterAuthor');
 };
 
 var sortRawData = function() {
