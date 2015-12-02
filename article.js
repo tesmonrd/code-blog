@@ -28,7 +28,7 @@ Article.prototype.timeRead = function(date) {
   var dateToday = new Date(year, month, day);
 
   var calcDay = Math.round(Math.abs((publishDate.getTime()- dateToday.getTime())/(smallerSegments)));
-  return
+  return calcDay;
 }
 Article.prototype.toHTML = function() {
   var time = this.timeRead(this.publishedOn);
@@ -43,6 +43,22 @@ Article.prototype.toHTML = function() {
   $('main').append($template);
 };
 
+Article.prototype.tagsDropDown = function() {
+  var $cloneCategoryItem = $('.categoryItem').clone();
+  $cloneCategoryItem.removeAttr('class');
+  $cloneCategoryItem.attr('value', this.category);
+  $cloneCategoryItem.text(this.category);
+  if($('#filterCategory select').find('option[value="' + this.category + '"]').length === 0) {
+    $('#filterCategory select').append($cloneCategoryItem);
+  };
+  var $cloneAuthorItem = $('.authorItem').clone();
+  $cloneAuthorItem.removeAttr('class');
+  $cloneAuthorItem.attr('value', this.author);
+  $cloneAuthorItem.text(this.author);
+  if($('#filterAuthor select').find('option[value="' + this.author + '"]').length === 0) {
+    $('#filterAuthor select').append($cloneAuthorItem);
+  };
+};
 var sortRawData = function() {
   blog.rawData.sort(function(a, b) {
     if(a.publishedOn > b.publishedOn) {return -1;}
@@ -55,19 +71,5 @@ var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
     var blogPost = new Article(blog.rawData[i]);
     blogPost.toHTML();
-  }
-};
-
-var populateAuthorFilter = function() {
-  for (var i = 0; i < collectedEntries.length; i++) {
-    var getAuthors = collectedEntries[i].author;
-    $('.authorItem').append().html('<option>' + getAuthors + '</option>');
-  }
-};
-
-var populateCategoriesFilter = function() {
-  for (var i = 0; i < collectedEntries.length; i++) {
-    var getCategories = collectedEntries[i].category;
-    $('.categoryItem').append().html('<option>' + getCategories + '</option>');
   }
 };
