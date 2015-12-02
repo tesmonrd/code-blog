@@ -50,7 +50,7 @@ Article.prototype.tagsDropDown = function() {
   $cloneCategoryItem.text(this.category);
   if($('#filterCategory select').find('option[value="' + this.category + '"]').length === 0) {
     $('#filterCategory select').append($cloneCategoryItem);
-  };
+  }
   var $cloneAuthorItem = $('.authorItem').clone();
   $cloneAuthorItem.removeAttr('class');
   $cloneAuthorItem.attr('value', this.author);
@@ -71,5 +71,6 @@ var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
     var blogPost = new Article(blog.rawData[i]);
     blogPost.toHTML();
+    blogPost.tagsDropDown();
   }
 };
