@@ -42,11 +42,23 @@ main>h1 {
   text-align: left;
 }
 
-
-
 p>img {
   clear:both;
   height: 200px;
-  width: auto;
+  max-width: auto;
   margin: 3%;
+}
+
+.main-nav img {
+
+}
+
+@media only screen and (min-width: 640px){
+  .icon-menu{
+    display: none;
+  }
+
+  .main-nav ul{
+    display: block;
+  }
 }
