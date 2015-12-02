@@ -59,6 +59,7 @@ Article.prototype.tagsDropDown = function() {
     $('#filterAuthor select').append($cloneAuthorItem);
   };
 };
+
 var sortRawData = function() {
   blog.rawData.sort(function(a, b) {
     if(a.publishedOn > b.publishedOn) {return -1;}
