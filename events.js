@@ -1,8 +1,4 @@
-blog.handleMainNav = function() {
-  $('.tab').on('click', function(e) {
-    $('article').hide();
-  })
-}
+// create filter event for when option is selected with form
 
 blog.truncateArticles= function() {
   $('article p:not(:first-child)').hide();
