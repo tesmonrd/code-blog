@@ -1,5 +1,6 @@
 var collectedEntries = [];
 var blog = {};
+var collectedAuthors = [];
 blog.rawData = [];
 
 var Article = function(blog) {
@@ -10,7 +11,7 @@ var Article = function(blog) {
   this.publishedOn = blog.publishedOn;
   this.body = blog.body;
   collectedEntries.push(this);
-}
+};
 
 Article.prototype.toHTML = function() {
   $template = $('#template').clone();
@@ -21,10 +22,7 @@ Article.prototype.toHTML = function() {
   $template.find('.category').html(this.category);
   $template.find('.publishedOn').html(this.publishedOn);
   $template.find('.body').html(this.body);
-  
   $('main').append($template);
-  $('.filterAuthor').find('.author').html(this.author);
-  $('.filter').append('.filterAuthor');
 };
 
 var sortRawData = function() {
@@ -39,5 +37,18 @@ var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
     var blogPost = new Article(blog.rawData[i]);
     blogPost.toHTML();
+  }
+};
+
+var populateAuthorFilter = function() {
+  for (var i = 0; i < collectedEntries.length; i++) {
+    var getAuthors = collectedEntries[i].author;
+  }
+};
+
+var populateCategoriesFilter = function() {
+  for (var i = 0; i < collectedEntries.length; i++) {
+    var getCategories = collectedEntries[i].category;
+    console.log(getCategories);
   }
 };
