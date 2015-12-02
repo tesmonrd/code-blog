@@ -1,6 +1,5 @@
 var collectedEntries = [];
 var blog = {};
-var collectedAuthors = [];
 blog.rawData = [];
 
 var Article = function(blog) {
@@ -49,6 +48,6 @@ var populateAuthorFilter = function() {
 var populateCategoriesFilter = function() {
   for (var i = 0; i < collectedEntries.length; i++) {
     var getCategories = collectedEntries[i].category;
-    console.log(getCategories);
+    $()
   }
 };
