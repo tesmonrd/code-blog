@@ -1,6 +1,6 @@
 sortRawData();
 buildComment();
 blog.truncateArticles();
-populateAuthorFilter();
-populateCategoriesFilter();
 $('#template').remove();
+sortByAuthor();
+sortByCategory();
