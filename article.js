@@ -43,11 +43,12 @@ var populateAuthorFilter = function() {
   for (var i = 0; i < collectedEntries.length; i++) {
     var getAuthors = collectedEntries[i].author;
   }
+  $('.filterAuthor').append().html('<option>'+ getAuthors + '</option>');
 };
 
 var populateCategoriesFilter = function() {
   for (var i = 0; i < collectedEntries.length; i++) {
     var getCategories = collectedEntries[i].category;
-    $()
   }
+  $('.filterCategory').append().html('<option>' + getCategories + '</option>')
 };
