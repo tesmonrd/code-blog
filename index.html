@@ -1,4 +1,3 @@
-<!-- Steps to complete, apply template to articles and change template each time -->
 <html>
   <head>
     <script src="jquery-2.1.4.min.js"></script>
@@ -6,6 +5,7 @@
     <title>Rick's Blog</title>
   </head>
   <body>
+    <div>
     <header>
       <h1 class="title">Rick Tesmond's Blog</h1>
       <nav class="main-nav">
@@ -15,13 +15,24 @@
             <li><button><img class="tab" src="images/Linkedin.png">Linkedin</button></li>
             <li><button><img class="tab" src="images/Github.png">Github</button></li>
           </ul>
+          <form class="filterAuthor">
+            <select class="filter">
+              <option class="author">Author</option>
+            </select>
+          </form>
+          <form class="filterCat">
+            <select class="filter">
+              <option class="category">category</option>
+            </select>
+          </form>
       </nav>
     </header>
+  </div>
     <main>
       <article id="template">
         <h1 class="title"></h1>
         <h5 class="category"></h5>
-        <h5><em>Written by: </em><a href='#' class="author"></a><em> on </em></h5>
+        <h5><em>Written by: </em><a href='#' class="author"></a><em> on </em><span class="publishedOn"></span></h5>
         <div class="body"></div>
         <a href="#" class="read-on">Read on -></a> <hr/>
       </article>
