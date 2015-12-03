@@ -2,5 +2,5 @@ sortRawData();
 buildComment();
 blog.truncateArticles();
 $('#template').remove();
-sortByAuthor();
-sortByCategory();
+$('#filterAuthor').change(sortByAuthor);
+$('#filterCategory').change(sortByCategory);
