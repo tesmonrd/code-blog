@@ -1,0 +1,97 @@
+body {
+  background-image: url("images/background.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+header {
+  background-color: #baddad;
+  max-width:100%;
+  float:bottom;
+}
+
+.hamburger{
+  background:none;
+  position:absolute;
+  top:0;
+  right:0;
+  line-height:45px;
+  padding:0px 15px 0px 15px;
+  color:#fff;
+  border:0;
+  font-size:1.4em;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+
+.cross{
+  background:none;
+  position:absolute;
+  top:0px;
+  right:0;
+  padding:0px 15px 0px 15px;
+  color:#fff;
+  border:0;
+  font-size:3em;
+  line-height:65px;
+  font-weight:bold;
+  cursor:pointer;
+  outline:none;
+  z-index:10000000000000;
+}
+
+.title{
+  text-align: center;
+  padding-top: 20px;
+}
+
+main {
+  background-color: rgba(255,255,255,.7);
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 20px;
+  max-width:90%;
+}
+
+main>h1 {
+  text-align: left;
+}
+
+p>img {
+  clear:both;
+  height: 200px;
+  max-width: auto;
+  margin: 3%;
+}
+
+li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+@media only screen and (min-width: 640px){
+  .icon-menu{
+    display: none;
+  }
+  li {
+    list-style-type: none;
+    display: inline-block;
+  }
+
+  button{
+    max-width: 100%;
+    margin: 0%;
+
+  }
+  .tab {
+  	display: inline-block;
+    margin:2%;
+  	width: 2em;
+  	height: 2em;
+  	fill: currentColor;
+  }
+  .main-nav ul{
+    display: block;
+  }
+}
