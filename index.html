@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/CSS" href="style.css">
     <title>Rick's Blog</title>
     <script id="article-template" type="text/blagh">
-      <article id="template">
+      <article data-author={{authorSlug}} data-category={{category}}>
         <h1 class="title">{{title}}</h1>
         <h5 class="category">{{category}}</h5>
         <h5><em>Written by: </em><a href='#' class="author">{{author}}</a><em> on </em><span class="publishedOn">{{publishedOn}}</span></h5>
