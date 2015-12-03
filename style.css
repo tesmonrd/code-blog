@@ -1,3 +1,4 @@
+/*------------- BASE ---------*/
 body {
   background-image: url("images/background.jpg");
   background-repeat: repeat;
@@ -6,9 +7,37 @@ body {
 
 header {
   background-color: #baddad;
+}
+
+main {
+  background-color: rgba(255,255,255,.7);
+}
+
+li {
+  list-style-type: none;
+  position:relative;
+}
+
+.headerTitle{
+  color: white;
+  background-color: black;
+}
+/*------------- LAYOUT ---------*/
+header {
   max-width:100%;
-  max-height:inherit;
+  height:auto;
   height: 200px;
+}
+
+main {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding: 20px;
+  max-width:100%;
+}
+
+select{
+  width:40%;
 }
 
 .headerTitle{
@@ -16,13 +45,19 @@ header {
   padding-top: 5%;
   padding-left:4%;
   padding-bottom: 5%;
-  /*font-size: 60px;*/
-  color: white;
-  background-color: black;
 }
+
+p>img {
+  clear:both;
+  height: 200px;
+  max-width: auto;
+  margin: 3%;
+}
+/*------------- MODULE ---------*/
 .main-nav {
   margin: 5%;
 }
+
 .hamburger{
   background:none;
   position:absolute;
@@ -42,7 +77,7 @@ header {
 .cross{
   background:none;
   position:absolute;
-  top:0px;
+  top:0;
   right:0;
   padding:10px 15px 0px 15px;
   color:#fff;
@@ -52,42 +87,20 @@ header {
   font-weight:bold;
   cursor:pointer;
   outline:none;
-  z-index:10000000000000;
+  z-index:1;
 }
-
-main {
-  background-color: rgba(255,255,255,.7);
-  margin-left: 5%;
-  margin-right: 5%;
-  padding: 20px;
-  max-width:100%;
-}
-
+/*------------- STATE ---------*/
+/*------------- THEME ---------*/
 main h1 {
   text-align: left;
 }
 
-p>img {
-  clear:both;
-  height: 200px;
-  max-width: auto;
-  margin: 3%;
-}
 
-li {
-  list-style-type: none;
-  position:relative;
-}
-
-select{
-  width:40%;
-}
-
-
+/* ----- MEDIA QUERIES --------*/
 @media only screen and (min-width: 640px){
-  .icon-menu{
+  /*.icon-menu{
     display: none;
-  }
+  }*/
 
   .nav-item {
     list-style-type: none;
