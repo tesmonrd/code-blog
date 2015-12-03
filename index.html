@@ -8,8 +8,10 @@
     <div>
     <header>
       <h1 class="title">Rick Tesmond's Blog</h1>
-      <nav class="main-nav">
-        <div class="icon-menu"></div>
+      <button class="hamburger"><span class="icon-menu"><img src="images/Menu.svg" /></span></button>
+      <button class="cross"><span class="icon-menu"><img src="images/Cross.svg" /></span></button>
+      <nav class= "main-nav">
+        <div class="menu">
           <ul>
             <li class="nav-item"><a href="index.html"><button><img class="tab" src="images/Home.png">Home</button></a></li>
             <li class="nav-item"><a href="about.html"><button><img class="tab" src="images/About.png">About</button></a></li>
@@ -26,9 +28,11 @@
               <option class="categoryItem" value="none">--Filter by Category--</option>
             </select>
           </form>
+        </div>
       </nav>
     </header>
   </div>
+  <div class="site-wrap">
     <main>
       <article id="template">
         <h1 class="title"></h1>
@@ -41,6 +45,7 @@
     <footer>
 
     </footer>
+  </div>
   </body>
   <script src="article.js"></script>
   <script src="blogArticles.js"></script>
