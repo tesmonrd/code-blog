@@ -36,10 +36,11 @@ Article.prototype.toHTML = function() {
   $template.removeAttr('id');
   $template.find('.title').html(this.title);
   $template.find('.author').html(this.author);
-  $template.find('.author').attr('href', this.authorUrl);
   $template.find('.category').html(this.category);
   $template.find('.publishedOn').html(this.publishedOn);
   $template.find('.body').html(this.body);
+  $template.data('author', this.author);
+  $template.data('category', this.category);
   $('main').append($template);
 };
 
