@@ -3,26 +3,40 @@ body {
   background-repeat: repeat;
   background-attachment: fixed;
 }
+
 header {
   background-color: #baddad;
   max-width:100%;
-  float:bottom;
+  max-height:inherit;
+  height: 200px;
 }
 
+.headerTitle{
+  text-align: left;
+  padding-top: 5%;
+  padding-left:4%;
+  padding-bottom: 5%;
+  /*font-size: 60px;*/
+  color: white;
+  background-color: black;
+}
+.main-nav {
+  margin: 5%;
+}
 .hamburger{
   background:none;
   position:absolute;
   top:0;
   right:0;
   line-height:45px;
-  padding:0px 15px 0px 15px;
+  padding:10px 15px 0px 15px;
   color:#fff;
   border:0;
-  font-size:1.4em;
+  font-size:3em;
   font-weight:bold;
   cursor:pointer;
   outline:none;
-  z-index:10000000000000;
+  z-index:1;
 }
 
 .cross{
@@ -30,7 +44,7 @@ header {
   position:absolute;
   top:0px;
   right:0;
-  padding:0px 15px 0px 15px;
+  padding:10px 15px 0px 15px;
   color:#fff;
   border:0;
   font-size:3em;
@@ -41,20 +55,15 @@ header {
   z-index:10000000000000;
 }
 
-.title{
-  text-align: center;
-  padding-top: 20px;
-}
-
 main {
   background-color: rgba(255,255,255,.7);
   margin-left: 5%;
   margin-right: 5%;
   padding: 20px;
-  max-width:90%;
+  max-width:100%;
 }
 
-main>h1 {
+main h1 {
   text-align: left;
 }
 
@@ -67,18 +76,27 @@ p>img {
 
 li {
   list-style-type: none;
-  display: inline-block;
+  position:relative;
 }
+
+select{
+  width:40%;
+}
+
 
 @media only screen and (min-width: 640px){
   .icon-menu{
     display: none;
   }
-  li {
+
+  .nav-item {
     list-style-type: none;
     display: inline-block;
   }
 
+  select{
+    width:30%;
+  }
   button{
     max-width: 100%;
     margin: 0%;
