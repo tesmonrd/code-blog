@@ -6,6 +6,7 @@ var Article = function(blog) {
   this.title = blog.title;
   this.category = blog.category;
   this.author = blog.author;
+  this.authorSlug = blog.author.replace(/\ /g, '');
   this.authorUrl = blog.authorUrl;
   this.publishedOn = blog.publishedOn;
   this.body = blog.body;
@@ -38,7 +39,6 @@ Article.prototype.toHTML = function() {
   var html = template(this);
   return html;
 };
-
 
 Article.prototype.tagsDropDown = function() {
   var $cloneCategoryItem = $('.categoryItem').clone();
