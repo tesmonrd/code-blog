@@ -41,8 +41,9 @@ Article.prototype.toHTML = function() {
   $template.find('.body').html(this.body);
   $template.data('author', this.author);
   $template.data('category', this.category);
-  $('main').append($template);
+  return $template;
 };
+
 
 Article.prototype.tagsDropDown = function() {
   var $cloneCategoryItem = $('.categoryItem').clone();
@@ -61,6 +62,10 @@ Article.prototype.tagsDropDown = function() {
   };
 };
 
+Article.prototype.publish = function() {
+  var $template = this.toHTML();
+  $('main').append($template);
+}
 var sortRawData = function() {
   blog.rawData.sort(function(a, b) {
     if(a.publishedOn > b.publishedOn) {return -1;}
@@ -72,7 +77,20 @@ var sortRawData = function() {
 var buildComment = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
     var blogPost = new Article(blog.rawData[i]);
-    blogPost.toHTML();
+    blogPost.publish();
     blogPost.tagsDropDown();
   }
 };
+
+// Start HANDLEBAR template
+
+var compile = function(template,expressions) {
+  return template.replace(____, swapper);
+  function swapper (match,capture){
+    return expressions[capture];
+  };
+};
+
+var appTemplate = $('article').html;
+var compileTemplate = compile(appTemplate, blog.rawData);
+$('article').append(html);
