@@ -8,12 +8,13 @@
       <article data-author={{authorSlug}} data-category={{category}}>
         <h1 class="title">{{title}}</h1>
         <h5 class="category">{{category}}</h5>
-        <h5><em>Written by: </em><a href='#' class="author">{{author}}</a><em> on </em><span class="publishedOn">{{publishedOn}}</span></h5>
-        <div class="body">{{body}}</div>
+        <h5><em>Written by: </em><a href="{{authorUrl}}">{{author}}</a><em> on </em>{{publishedOn}}</h5>
+        <div class="body">{{{body}}}</div>
         <a href="#" class="read-on">Read on -></a> <hr/>
       </article>
     </script>
   </head>
+
   <body>
     <header>
       <h1 class="headerTitle">Rick Tesmond's Blog</h1>
