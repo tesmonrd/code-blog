@@ -23,25 +23,20 @@ Article.prototype.timeRead = function(date) {
   var mnth = parseInt(date.slice(5,7));
   var dy = parseInt(date.slice(8,10));
 
-  var smallerSegments = 24*60*60*1000
+  var smallerSegments = 24*60*60*1000;
   var publishDate = new Date(yr, mnth, dy);
   var dateToday = new Date(year, month, day);
 
   var calcDay = Math.round(Math.abs((publishDate.getTime()- dateToday.getTime())/(smallerSegments)));
   return calcDay;
-}
+};
+
 Article.prototype.toHTML = function() {
   var time = this.timeRead(this.publishedOn);
-  $template = $('#template').clone();
-  $template.removeAttr('id');
-  $template.find('.title').html(this.title);
-  $template.find('.author').html(this.author);
-  $template.find('.category').html(this.category);
-  $template.find('.publishedOn').html(this.publishedOn);
-  $template.find('.body').html(this.body);
-  $template.data('author', this.author);
-  $template.data('category', this.category);
-  return $template;
+  var source = $('#article-template').html();
+  var template = Handlebars.compile(source);
+  var html = template(this);
+  return html;
 };
 
 
@@ -81,16 +76,3 @@ var buildComment = function () {
     blogPost.tagsDropDown();
   }
 };
-
-// Start HANDLEBAR template
-
-var compile = function(template,expressions) {
-  return template.replace(____, swapper);
-  function swapper (match,capture){
-    return expressions[capture];
-  };
-};
-
-var appTemplate = $('article').html;
-var compileTemplate = compile(appTemplate, blog.rawData);
-$('article').append(html);
