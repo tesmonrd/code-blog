@@ -1,23 +1,36 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <link rel="stylesheet" type="text/CSS" href="style.css">
     <title>Rick's Blog</title>
+    <script id="article-template" type="text/blagh">
+      <article data-author={{authorSlug}} data-category={{category}}>
+        <h1 class="title">{{title}}</h1>
+        <h5 class="category">{{category}}</h5>
+        <h5><em>Written by: </em><a href="{{authorUrl}}">{{author}}</a><em> on </em>{{publishedOn}}</h5>
+        <div class="body">{{{body}}}</div>
+        <a href="#" class="read-on">Read on -></a> <hr/>
+      </article>
+    </script>
   </head>
+
   <body>
-    <div>
     <header>
-      <h1 class="title">Rick Tesmond's Blog</h1>
+      <h1 class="headerTitle">Rick Tesmond's Blog</h1>
       <button class="hamburger"><span class="icon-menu"><img src="images/Menu.svg" /></span></button>
       <button class="cross"><span class="icon-menu"><img src="images/Cross.svg" /></span></button>
-      <nav class= "main-nav">
+      <nav>
         <div class="menu">
           <ul>
-            <li class="nav-item"><a href="index.html"><button><img class="tab" src="images/Home.png">Home</button></a></li>
-            <li class="nav-item"><a href="about.html"><button><img class="tab" src="images/About.png">About</button></a></li>
-            <li class="nav-item"><button><img class="tab" src="images/Linkedin.png">Linkedin</button></li>
-            <li class="nav-item"><button><img class="tab" src="images/Github.png">Github</button></li>
+            <li class="nav-item"><a href="index.html"><img class="tab" src="images/Home.png">Home</a></li>
+            <li class="nav-item"><a href="about.html"><img class="tab" src="images/About.png">About</a></li>
+            <li class="nav-item"><img class="tab" src="images/Linkedin.png">Linkedin</li>
+            <li class="nav-item"><img class="tab" src="images/Github.png">Github</li>
           </ul>
+        </div>
+        <div class="forms">
           <form id="filterAuthor">
             <select id="select-Author">
               <option class="authorItem" value="none">--Filter by Author--</option>
@@ -31,21 +44,13 @@
         </div>
       </nav>
     </header>
-  </div>
-  <div class="site-wrap">
-    <main>
-      <article id="template">
-        <h1 class="title"></h1>
-        <h5 class="category"></h5>
-        <h5><em>Written by: </em><a href='#' class="author"></a><em> on </em><span class="publishedOn"></span></h5>
-        <div class="body"></div>
-        <a href="#" class="read-on">Read on -></a> <hr/>
-      </article>
-    </main>
-    <footer>
+    <div class="site-wrap">
+      <main>
+      </main>
+      <footer>
 
-    </footer>
-  </div>
+      </footer>
+    </div>
   </body>
   <script src="article.js"></script>
   <script src="blogArticles.js"></script>

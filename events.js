@@ -3,7 +3,7 @@ var sortByAuthor = function(event) {
   $('main').find('article').hide();
   if (event.target.value !== 'none') {
     $('main').find('article').filter(function() {
-      return $(this).data('author') === event.target.value;
+      return $(this).attr('data-author') === event.target.value.replace(/\ /g, '');
     }).show();
   } else {
     $('main').find('article').show();
@@ -15,7 +15,7 @@ var sortByCategory = function(event) {
   $('main').find('article').hide();
   if (event.target.value !== 'none') {
     $('main').find('article').filter(function() {
-      return $(this).data('category') === event.target.value;
+      return $(this).attr('data-category') === event.target.value;
     }).show();
   } else {
     $('main').find('article').show();
@@ -31,17 +31,21 @@ blog.truncateArticles = function() {
   });
 };
 
-$( '.cross' ).hide();
-// $( '.menu' ).hide();
+// ------------ HAMBURGER-CROSS CLICK FUNCTION ----------//
+
 $( '.hamburger' ).click(function() {
-  $( '.menu' ).slideToggle( 'slow', function() {
+  $( 'nav' ).slideToggle( 'slow', function() {
     $( '.hamburger' ).hide();
     $( '.cross' ).show();
+    $( '.forms' ).show();
+    $( '.menu' ).show();
   });
 });
 
 $( '.cross' ).click(function() {
-  $( '.menu' ).slideToggle( 'slow', function() {
+  $( 'nav' ).slideToggle( 'slow', function() {
+    $( '.forms' ).hide();
+    $( '.menu' ).hide();
     $( '.cross' ).hide();
     $( '.hamburger' ).show();
   });
