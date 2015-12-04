@@ -26,7 +26,7 @@ li {
 header {
   max-width:100%;
   height:auto;
-  height: 200px;
+  padding-bottom: .5%;
 }
 
 main {
@@ -54,8 +54,9 @@ p>img {
   margin: 3%;
 }
 /*------------- MODULE ---------*/
-.main-nav {
+nav {
   margin: 5%;
+  display: none;
 }
 
 .hamburger{
@@ -75,6 +76,7 @@ p>img {
 }
 
 .cross{
+  display: none;
   background:none;
   position:absolute;
   top:0;
@@ -98,13 +100,17 @@ main h1 {
 
 /* ----- MEDIA QUERIES --------*/
 @media only screen and (min-width: 640px){
-  /*.icon-menu{
-    display: none;
-  }*/
+  nav {
+    display: block;
+  }
 
   .nav-item {
     list-style-type: none;
     display: inline-block;
+  }
+
+  .icon-menu {
+    display: none;
   }
 
   select{
@@ -122,7 +128,7 @@ main h1 {
   	height: 2em;
   	fill: currentColor;
   }
-  .main-nav ul{
+  nav ul{
     display: block;
   }
 }
