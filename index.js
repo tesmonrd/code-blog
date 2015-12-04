@@ -1,3 +1,4 @@
+// ----------- Function Calls ---------------//
 sortRawData();
 buildComment();
 blog.truncateArticles();
