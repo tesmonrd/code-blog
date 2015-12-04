@@ -31,21 +31,21 @@ blog.truncateArticles = function() {
   });
 };
 
+// ------------ HAMBURGER-CROSS CLICK FUNCTION ----------//
 
-$( '.cross' ).hide();
-$( '.menu' ).hide();
-$( '.forms' ).hide();
 $( '.hamburger' ).click(function() {
-  $( '.menu' ).slideToggle( 'slow', function() {
+  $( 'nav' ).slideToggle( 'slow', function() {
     $( '.hamburger' ).hide();
-    $( '.forms' ).show();
     $( '.cross' ).show();
+    $( '.forms' ).show();
+    $( '.menu' ).show();
   });
 });
 
 $( '.cross' ).click(function() {
-  $( '.menu' ).slideToggle( 'slow', function() {
+  $( 'nav' ).slideToggle( 'slow', function() {
     $( '.forms' ).hide();
+    $( '.menu' ).hide();
     $( '.cross' ).hide();
     $( '.hamburger' ).show();
   });
