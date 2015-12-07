@@ -6,7 +6,7 @@ body {
 }
 
 header {
-  background-color: #baddad;
+  background-color: #3295D5;
 }
 
 main {
@@ -30,8 +30,7 @@ header {
 }
 
 main {
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 5% 5% 0% 5%;
   padding: 20px;
   max-width:100%;
 }
@@ -47,15 +46,15 @@ select{
   padding-bottom: 5%;
 }
 
-p>img {
-  clear:both;
+p img {
+  clear: both;
   height: 200px;
   max-width: auto;
   margin: 3%;
 }
 /*------------- MODULE ---------*/
 nav {
-  margin: 5%;
+  margin: 3%;
   display: none;
 }
 
@@ -129,6 +128,6 @@ main h1 {
   	fill: currentColor;
   }
   nav ul{
-    display: block;
+    display: inline-block;
   }
 }
