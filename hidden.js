@@ -6,12 +6,11 @@ var Article = function() {
   this.author = $('#author').val();
   this.authorUrl = $('#authorUrl').val();
   this.publishedOn = $('#publishedOn').val();
-  this.body = $('#body').val();    //need to call marked function on body
+  this.body = marked($('#body').val());    //need to call marked function on body
   articleFromPage.push(this);
 
-  var copyObject = {title: this.title, category: this.category, authorUrl: this.authorUrl, publishedOn: this.publishedOn, body: this.body};
-  var copyObjectString= JSON.stringify(copyObject);
-  $('#copy-code').html(copyObjectString);
+  var copyObject = JSON.stringify({title: this.title, category: this.category, authorUrl: this.authorUrl, publishedOn: this.publishedOn, body: this.body});
+  $('#copy-code').html(copyObject);
 };
 
 Article.prototype.toHTML = function() {
@@ -34,9 +33,7 @@ var buildComment = function () {
 $('#Article').on('submit', function(event){
   event.preventDefault();
   buildComment();
-});
-
-//highlight code
-$('pre code').each(function(i, block) {
-  hljs.highlightBlock(block);
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 });
