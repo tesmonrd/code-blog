@@ -1,10 +1,9 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/CSS" href="style.css">
-    <title>Rick's Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="jquery-2.1.4.min.js"></script>
     <script id="article-template" type="text/blagh">
-      <article data-author={{authorSlug}} data-category={{category}}>
         <h1 class="title">{{title}}</h1>
         <h5 class="category">{{category}}</h5>
         <h5><em>Written by: </em><a href="{{authorUrl}}">{{author}}</a><em> on </em>{{publishedOn}}</h5>
@@ -12,6 +11,7 @@
         <a href="#" class="read-on">Read on -></a> <hr/>
       </article>
     </script>
+    <title>Rick's Blog</title>
   </head>
   <body>
     <header>
@@ -21,10 +21,10 @@
       <nav>
         <div class="menu">
           <ul>
-            <li class="nav-item"><a href="index.html"><img class="tab" src="images/Home.png">Home</a></li>
-            <li class="nav-item"><a href="about.html"><img class="tab" src="images/About.png">About</a></li>
-            <li class="nav-item"><a href="https://www.linkedin.com/in/richardtesmond"><img class="tab" src="images/Linkedin.png">Linkedin</a></li>
-            <li class="nav-item"><a href="https://github.com/tesmonrd"><img class="tab" src="images/Github.png">Github</a></li>
+            <li id="home"><a href="index.html"><img class="tab" src="images/Home.png">Home</a></li>
+            <li id="about"><a href="about.html"><img class="tab" src="images/About.png">About</a></li>
+            <li><a href="https://www.linkedin.com/in/richardtesmond"><img class="tab" src="images/Linkedin.png">Linkedin</a></li>
+            <li><a href="https://github.com/tesmonrd"><img class="tab" src="images/Github.png">Github</a></li>
           </ul>
         </div>
       </nav>
