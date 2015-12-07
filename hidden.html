@@ -1,9 +1,8 @@
 <html>
   <head>
-    <script src="jquery-2.1.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <link rel="stylesheet" type="text/CSS" href="style.css">
     <title>Rick's Blog</title>
+    <script src="jquery-2.1.4.min.js"></script>
     <script id="article-template" type="text/blagh">
       <article data-author={{authorSlug}} data-category={{category}}>
         <h1 class="title">{{title}}</h1>
@@ -31,11 +30,41 @@
       </nav>
     </header>
     <main>
+      <form id="Article">
+        <p>
+        Title:
+        <input type="text" id="title" value="">
+        </p>
+        <p>
+          Category:
+          <input type="text" id="category" value="">
+        </p>
+        <p>
+          Author:
+          <input type="text" id="author" value="">
+        </p>
+        <p>
+          Author URL:
+          <input type="text" id="authorUrl" value="">
+        </p>
+        <p>
+          Date:
+          <input type="text" id="publishedOn" value="">
+        </p>
+        <p>
+          Text here:
+        </p>
+        <textarea id="body" rows="8" cols="40"></textarea>
+        <input type="submit">
+      </form>
+      <div id="sampleArticle">
     </main>
     <footer>
 
     </footer>
   </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>
   <script src="hidden.js"></script>
   <script src="events.js"></script>
 </html>
