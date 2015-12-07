@@ -103,10 +103,7 @@ main h1 {
     display: block;
   }
 
-  .nav-item {
-    list-style-type: none;
-    display: inline-block;
-  }
+
 
   .icon-menu {
     display: none;
