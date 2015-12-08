@@ -33,10 +33,8 @@ Article.prototype.timeRead = function(date) {
 };
 
 Article.prototype.toHTML = function() {
-  var time = this.timeRead(this.publishedOn);
-  var source = $('#article-template').html();
-  var template = Handlebars.compile(source);
-  var html = template(this);
+  // var time = this.timeRead(this.publishedOn);
+  var html = (this);
   return html;
 };
 
@@ -62,6 +60,10 @@ Article.prototype.publish = function() {
   $('main').append($template);
 };
 
+var source = $.get('template.handlebars', function(data) {
+    Article.prototype.template = Handlebars.compile();
+});
+
 var sortRawData = function() {
   blog.rawData.sort(function(a, b) {
     if(a.publishedOn > b.publishedOn) {return -1;}
@@ -70,7 +72,7 @@ var sortRawData = function() {
   });
 };
 
-var buildComment = function () {
+var buildArticle = function () {
   for(var i = 0; i < blog.rawData.length; i++) {
     var blogPost = new Article(blog.rawData[i]);
     blogPost.publish();
