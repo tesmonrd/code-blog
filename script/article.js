@@ -60,7 +60,7 @@ Article.prototype.publish = function() {
   $('main').append($template);
 };
 
-var source = $.get('template.handlebars', function(data) {
+var source = $.get('script/template.handlebars', function(data) {
   Article.prototype.template = Handlebars.compile(data);
 });
 
