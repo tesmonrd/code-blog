@@ -1,6 +1,7 @@
+//Change Article name
 var articleFromPage = [];
 
-var Article = function() {
+var ArticlePreview = function() {
   this.title = $('#title').val();
   this.category = $('#category').val();
   this.author = $('#author').val();
@@ -13,26 +14,26 @@ var Article = function() {
   $('#copy-code').html(copyObject);
 };
 
-Article.prototype.toHTML = function() {
+ArticlePreview.prototype.toHTML = function() {
   var source = $('#article-template').html();
   var template = Handlebars.compile(source);
   var html = template(this);
   return html;
 };
 
-Article.prototype.publish = function() {
+ArticlePreview.prototype.publish = function() {
   var $template = this.toHTML();
   $('#sampleArticle').append($template);
 };
 
-var buildComment = function () {
-  var blogPost = new Article (articleFromPage);
+var buildArticle = function () {
+  var blogPost = new ArticlePreview (articleFromPage);
   blogPost.publish();
 };
 
 $('#Article').on('submit', function(event){
   event.preventDefault();
-  buildComment();
+  buildArticle();
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
