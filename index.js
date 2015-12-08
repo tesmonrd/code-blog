@@ -1,6 +1,8 @@
 // ----------- Function Calls ---------------//
-sortRawData();
-buildComment();
-blog.truncateArticles();
-$('#filterAuthor').change(sortByAuthor);
-$('#filterCategory').change(sortByCategory);
+$(document).ready(function(){
+  sortRawData();
+  buildArticle();
+  blog.truncateArticles();
+  $('#filterAuthor').change(sortByAuthor);
+  $('#filterCategory').change(sortByCategory);
+});
