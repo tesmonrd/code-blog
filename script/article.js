@@ -61,7 +61,7 @@ Article.prototype.publish = function() {
 };
 
 var source = $.get('template.handlebars', function(data) {
-    Article.prototype.template = Handlebars.compile();
+  Article.prototype.template = Handlebars.compile(data);
 });
 
 var sortRawData = function() {
