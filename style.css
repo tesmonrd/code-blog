@@ -19,8 +19,14 @@ li {
 }
 
 .headerTitle{
+  font-family: 'Poiret One', cursive;
+  font-size: 1.7em bold;
   color: white;
   background-color: black;
+}
+
+h3 h4 h5 h6 {
+  font-family: 'Amatic SC', cursive;
 }
 /*------------- LAYOUT ---------*/
 header {
@@ -40,6 +46,7 @@ select{
 }
 
 .headerTitle{
+
   text-align: left;
   padding-top: 5%;
   padding-left:4%;
