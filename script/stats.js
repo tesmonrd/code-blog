@@ -35,7 +35,14 @@ stats.displayWordCount = function() {
 };
 
 stats.displayAveWordCount = function() {
-  
+  // divide total word length by total words
+  var splitWord = stats.blogArray.map(function(article){
+    return article.markdown.split(' ');
+  });
+
+  var totalWords = splitWord.reduce(function(previous, current) {
+    return previous + current;
+  });
 };
 
 
@@ -44,5 +51,6 @@ $.getJSON('script/hackerIpsum.json', function(blog) {
 }).done(
   stats.displayArtTotal,
   stats.displayAuthorTotal,
-  stats.displayWordCount
+  stats.displayWordCount,
+  stats.displayAveWordCount
 );
