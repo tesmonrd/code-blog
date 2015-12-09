@@ -6,12 +6,15 @@
 
 
 var stats = {};
+// var stats.uniqueAuthors = [];
 
 stats.displayArtTotal = function() {
   var articleTotal = stats.blogArray.length;
   $('#stats').append('<p>Total Number of Articles: ' + articleTotal + '</p>');
 };
 
+
+// Consider breaking into first part function find authors, and second printAuthor function
 stats.displayAuthorTotal = function() {
   var authorLog = [];
   stats.blogArray.forEach(function(article){
@@ -24,7 +27,6 @@ stats.displayAuthorTotal = function() {
 };
 
 stats.displayWordCount = function() {
-// go into each article's markdown and count total words... make an array of word count for each Articles ... add totals and send to html
   var wordCount = stats.blogArray.map(function(article){
     return article.markdown.length;
   });
@@ -34,10 +36,16 @@ stats.displayWordCount = function() {
   $('#stats').append('<p>Total Word Count: ' + sum + '</p>');
 };
 
+// -----------------------------------------------------------------//
+stats.wordCount = function(str) {
+  return str.replace(/[#,\n]/g,' ').match(/\b\w+/g);
+}
+
+// -----------------------------------------------------------------//
 stats.displayAveWordCount = function() {
   // divide total word length by total words
   var splitWord = stats.blogArray.map(function(article){
-    return article.markdown.split(' ');
+    return article.markdown.replace(/[#,\n]/g,' ').match(/\b\w+/g);;
   });
 
   var totalWords = splitWord.reduce(function(previous, current) {
@@ -45,6 +53,22 @@ stats.displayAveWordCount = function() {
   });
 };
 
+// -----------------------------------------------------------------//
+// stats.wordsPerAuthor = function() {
+//   stats.uniqueAuthors.forEach(function(element, index, array) {
+//     var countTemp = 0;
+//     var getAuthorWords = function(art) {
+//       if (art.author === element) {
+//         countTemp += stats.wordCound(art.markdown).length;
+//       };
+//     };
+//     stats.allArticles.forEach(getAuthorWords);
+//     stats.eachAuthorWords.push(countTemp);
+//   });
+//   stats.uniqueAuthors.forEach(function(element, index, array) {
+//     $('#stats').append('<p> Number of Words ' + element + ' has written: ' + )
+//   })
+// }
 
 $.getJSON('script/hackerIpsum.json', function(blog) {
   stats.blogArray = blog;
