@@ -4,12 +4,6 @@
   // <figure out a way to map article and reduce> get into p tags an
 // average word length by author
 
-// function pluck(property, collection) {
-//   console.log(collection);
-//   return collection.map(function(e) {
-//     return e[property];
-//   });
-// };
 
 var stats = {};
 
@@ -26,12 +20,29 @@ stats.displayAuthorTotal = function() {
     };
   });
   var authorTotal = authorLog.length;
-  $('#stats').append('<p>Total Number of Authors: ' + authorTotal + '</p>')
+  $('#stats').append('<p>Total Number of Authors: ' + authorTotal + '</p>');
 };
+
+stats.displayWordCount = function() {
+// go into each article's markdown and count total words... make an array of word count for each Articles ... add totals and send to html
+  var wordCount = stats.blogArray.map(function(article){
+    return article.markdown.length;
+  });
+  var sum = wordCount.reduce(function(previous, current) {
+    return previous + current;
+  });
+  $('#stats').append('<p>Total Word Count: ' + sum + '</p>');
+};
+
+stats.displayAveWordCount = function() {
+  
+};
+
 
 $.getJSON('script/hackerIpsum.json', function(blog) {
   stats.blogArray = blog;
 }).done(
   stats.displayArtTotal,
-  stats.displayAuthorTotal
+  stats.displayAuthorTotal,
+  stats.displayWordCount
 );
