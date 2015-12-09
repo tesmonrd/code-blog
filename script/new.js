@@ -1,4 +1,5 @@
 //Change Article name
+webDB.init();
 var articleFromPage = [];
 
 var ArticlePreview = function() {

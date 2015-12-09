@@ -3,7 +3,7 @@
 // average word length across all posts
   // <figure out a way to map article and reduce> get into p tags an
 // average word length by author
-
+webDB.init();
 
 var stats = {};
 // var stats.uniqueAuthors = [];
