@@ -1,5 +1,6 @@
 // ----------- Function Calls ---------------//
 $(document).ready(function(){
+  webDB.init();
   sortRawData();
   buildArticle();
   blog.truncateArticles();

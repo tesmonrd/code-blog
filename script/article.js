@@ -33,8 +33,9 @@ Article.prototype.timeRead = function(date) {
 };
 
 Article.prototype.toHTML = function() {
-  // var time = this.timeRead(this.publishedOn);
-  var html = (this);
+  var source = $('#article-template').html();
+  var template = Handlebars.compile(source);
+  var html = template(this);
   return html;
 };
 
@@ -55,14 +56,11 @@ Article.prototype.tagsDropDown = function() {
   };
 };
 
+
 Article.prototype.publish = function() {
   var $template = this.toHTML();
   $('main').append($template);
 };
-
-var source = $.get('script/template.handlebars', function(data) {
-  Article.prototype.template = Handlebars.compile(data);
-});
 
 var sortRawData = function() {
   blog.rawData.sort(function(a, b) {
