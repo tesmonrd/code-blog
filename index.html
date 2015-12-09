@@ -5,6 +5,14 @@
     <script src="jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
     <link rel="stylesheet" type="text/CSS" href="styles/style.css">
+    <script id="article-template" type="text/blagh">
+        <h1 class="title">{{title}}</h1>
+        <h5 class="category">{{category}}</h5>
+        <h5><em>Written by: </em><a href="{{authorUrl}}">{{author}}</a><em> on </em>{{publishedOn}}</h5>
+        <div class="body">{{{body}}}</div>
+        <a href="#" class="read-on">Read on -></a> <hr/>
+      </article>
+    </script>
     <title>Rick's Blog</title>
   </head>
 
@@ -55,6 +63,7 @@
   </body>
   <script src="script/article.js"></script>
   <script src="script/hackerIpsum.json"></script>
+  <script src="script/webdb.js"></script>
   <script src="script/events.js"></script>
   <script src="script/index.js"></script>
 </html>
