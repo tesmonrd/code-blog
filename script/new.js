@@ -52,10 +52,22 @@ ArticlePreview.prototype.updateRecord = function(callback) {
   );
 };
 
+Article.prototype.deleteRecord = function(callback) {
+  // Delete article record in database
+  webDB.execute(
+    [
+      {
+        'sql': 'DELETE FROM article WHERE id= ?',
+        'data': [article.id],
+      }
+    ],
+    callback
+  );
+};
+
 var buildArticle = function () {
   var blogPost = new ArticlePreview (articleFromPage);
   blogPost.publish();
-
 };
 
 $('#Article').on('submit', function(event){
