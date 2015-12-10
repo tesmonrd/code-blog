@@ -60,8 +60,8 @@ Article.prototype.insertRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'INSERT INTO article (title, category, author, authorUrl, publishedOn, markdown) VALUE (?, ?, ?, ?, ?, ?);',
-        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.body],
+        'sql': 'INSERT INTO articles (title, category, author, authorUrl, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown],
       }
     ],
     callback
@@ -71,12 +71,12 @@ Article.prototype.insertRecord = function(callback) {
 Article.prototype.updateRecord = function(callback) {
   //update article record in databse
   webDB.execute(
-      [
-        {
-          'sql': 'UPDATE article SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?',
-          'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown, article.id],
-        }
-      ],
+    [
+      {
+        'sql': 'UPDATE articles SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?;',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown, article.id],
+      }
+    ],
     callback
   );
 };
@@ -86,8 +86,20 @@ Article.prototype.deleteRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'DELETE FROM article WHERE id= ?',
+        'sql': 'DELETE FROM articles WHERE id= ?;',
         'data': [article.id],
+      }
+    ],
+    callback
+  );
+};
+
+Article.prototype.truncateTable = function(callback) {
+  // Delete all records from given table.
+  webDB.execute(
+    [
+      {
+        'sql': 'DELETE FROM articles;'
       }
     ],
     callback
@@ -98,6 +110,3 @@ Article.prototype.publish = function() {
   var $template = this.toHTML();
   $('main').append($template);
 };
-
-
-// ------------------------------------
