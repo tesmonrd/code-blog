@@ -56,24 +56,48 @@ Article.prototype.tagsDropDown = function() {
   };
 };
 
+Article.prototype.insertRecord = function(callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'INSERT INTO article (title, category, author, authorUrl, publishedOn, markdown) VALUE (?, ?, ?, ?, ?, ?);',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.body],
+      }
+    ],
+    callback
+  );
+};
+
+Article.prototype.updateRecord = function(callback) {
+  //update article record in databse
+  webDB.execute(
+      [
+        {
+          'sql': 'UPDATE article SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?',
+          'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown, article.id],
+        }
+      ],
+    callback
+  );
+};
+
+Article.prototype.deleteRecord = function(callback) {
+  // Delete article record in database
+  webDB.execute(
+    [
+      {
+        'sql': 'DELETE FROM article WHERE id= ?',
+        'data': [article.id],
+      }
+    ],
+    callback
+  );
+};
 
 Article.prototype.publish = function() {
   var $template = this.toHTML();
   $('main').append($template);
 };
 
-var sortRawData = function() {
-  blog.rawData.sort(function(a, b) {
-    if(a.publishedOn > b.publishedOn) {return -1;}
-    if(a.publishedOn < b.publishedOn) {return 1;}
-    return 0;
-  });
-};
 
-var buildArticle = function () {
-  for(var i = 0; i < blog.rawData.length; i++) {
-    var blogPost = new Article(blog.rawData[i]);
-    blogPost.publish();
-    blogPost.tagsDropDown();
-  }
-};
+// ------------------------------------
