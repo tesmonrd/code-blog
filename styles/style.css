@@ -1,6 +1,6 @@
 /*------------- BASE ---------*/
 body {
-  background-image: url("images/background.jpg");
+  background: white;
   background-repeat: repeat;
   background-attachment: fixed;
 }
