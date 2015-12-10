@@ -1,7 +1,9 @@
 // ----------- Function Calls ---------------//
 $(document).ready(function(){
   webDB.init();
-  sortRawData();
+  blog.loadArticles();
+
+  // sortRawData();
   buildArticle();
   blog.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
