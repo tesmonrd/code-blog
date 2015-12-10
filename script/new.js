@@ -1,8 +1,9 @@
 //Change Article name
 webDB.init();
+var article = {};
 var articleFromPage = [];
 
-var ArticlePreview = function() {
+function ArticlePreview() {
   this.title = $('#title').val();
   this.category = $('#category').val();
   this.author = $('#author').val();
@@ -31,8 +32,8 @@ ArticlePreview.prototype.insertRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'INSERT INTO article (title, category, author, authorUrl, publishedOn, markdown) VALUE (?, ?, ?, ?, ?, ?);',
-        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.body],
+        'sql': 'INSERT INTO articles (title, category, author, authorUrl, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown],
       }
     ],
     callback
@@ -40,11 +41,10 @@ ArticlePreview.prototype.insertRecord = function(callback) {
 };
 
 ArticlePreview.prototype.updateRecord = function(callback) {
-  //update article record in databse
   webDB.execute(
     [
       {
-        'sql': 'UPDATE article SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?',
+        'sql': 'UPDATE articles SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?;',
         'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown, article.id],
       }
     ],
@@ -52,27 +52,31 @@ ArticlePreview.prototype.updateRecord = function(callback) {
   );
 };
 
-Article.prototype.deleteRecord = function(callback) {
-  // Delete article record in database
+ArticlePreview.prototype.deleteRecord = function(callback) {
   webDB.execute(
     [
       {
-        'sql': 'DELETE FROM article WHERE id= ?',
-        'data': [article.id],
+        'sql': 'DELETE FROM article WHERE id= ?;',
+        'data': [articles.id],
       }
     ],
     callback
   );
 };
 
+var blogPost;
+
 var buildArticle = function () {
-  var blogPost = new ArticlePreview (articleFromPage);
+  blogPost = new ArticlePreview(articleFromPage);
   blogPost.publish();
 };
 
 $('#Article').on('submit', function(event){
   event.preventDefault();
   buildArticle();
+  blogPost.insertRecord(function(){
+    console.log("newPostpublish");
+  });
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
