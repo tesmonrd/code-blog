@@ -37,7 +37,7 @@ webDB.connect = function (database, title, size) {
 };
 
 webDB.setupTables = function () {
-  $.get('setup-tables.SQL',function(sqlStatements){
+  $.get('sql/setup-tables.SQL',function(sqlStatements){
     html5sql.process(
       sqlStatements,
       function() {
