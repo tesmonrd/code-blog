@@ -56,12 +56,26 @@ blog.fetchFromDB = function() {
 };
 
 blog.initArticles = function() {
-  blog.sortArticles;
+  if ($('.articles').length) {
+    blog.render();
+  };
 };
-// var sortRawData = function() {
-//   blog.rawData.sort(function(a, b) {
-//     if(a.publishedOn > b.publishedOn) {return -1;}
-//     if(a.publishedOn < b.publishedOn) {return 1;}
-//     return 0;
-//   });
-// };
+
+blog.render = function() {
+  blog.articles.forEach(blog.appendArticle);
+
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  blog.setTeasers();
+  blog.populateFilters();
+};
+
+var sortRawData = function() {
+  blog.articles.sort(function(a, b) {
+    if(a.publishedOn > b.publishedOn) {return -1;}
+    if(a.publishedOn < b.publishedOn) {return 1;}
+    return 0;
+  });
+};
