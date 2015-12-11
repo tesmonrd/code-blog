@@ -22,8 +22,6 @@ var sortByCategory = function(event) {
   }
 };
 
-
-
 // ------------ HAMBURGER-CROSS CLICK FUNCTION ----------//
 
 $( '.hamburger' ).click(function() {
