@@ -75,9 +75,18 @@ $('#Article').on('submit', function(event){
   event.preventDefault();
   buildArticle();
   blogPost.insertRecord(function(){
-    console.log("newPostpublish");
   });
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
+});
+
+$('#edit').on('click', function(event) {
+  event.preventDefault();
+  blogPost.updateRecord();
+});
+
+$('#delete').on('click', function(event) {
+  event.preventDefault();
+  blogPost.deleteRecord();
 });
