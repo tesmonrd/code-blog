@@ -5,7 +5,7 @@ blog.loadArticles = function () {
   $.get('script/template.handlebars', function(data, message, xhr){
     Article.prototype.template = Handlebars.compile(data);
     $.ajax({
-      typle: 'HEAD',
+      type: 'HEAD',
       url: 'script/hackerIpsum.json',
       success: blog.fetchArticles
     });
@@ -16,7 +16,7 @@ blog.fetchArticles = function(data,msg,xhr){
   var eTag = xhr.getResponseHeader('eTag');
   if(!localStorage.articlesEtag || localStorage.articlesEtag != eTag){
     console.log('cache miss!');
-    localStorage,articlesEtag = eTag;
+    localStorage.articlesEtag = eTag;
 
     blog.articles = [];
     webDB.execute(
@@ -63,14 +63,28 @@ blog.initArticles = function() {
 
 blog.render = function() {
   blog.articles.forEach(blog.appendArticle);
-
+  webDB.execute(
+    'SELECT * FROM articles;',
+    function (results) {
+      results.forEach(function(ele) { blog.appendArticle(ele); });
+    });
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
 
-  blog.setTeasers();
-  blog.populateFilters();
+  blog.truncateArticles();
+  article.tagsDropDown();
 };
+
+blog.truncateArticles = function() {
+  $('article p:not(:first-child)').hide();
+  $('.read-on').on('click', function() {
+    event.preventDefault();
+    $(this).parent().find('p').fadeIn();
+    $(this).hide();
+  });
+};
+
 
 var sortRawData = function() {
   blog.articles.sort(function(a, b) {
