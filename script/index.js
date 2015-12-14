@@ -4,7 +4,7 @@ $(document).ready(function(){
   webDB.init();
   blog.loadArticles();
 
-  sortRawData();
+  blog.sortRawData();
   blog.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);

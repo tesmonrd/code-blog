@@ -9,7 +9,7 @@ var Article = function(blog) {
   this.authorSlug = blog.author.replace(/\ /g, '');
   this.authorUrl = blog.authorUrl;
   this.publishedOn = blog.publishedOn;
-  this.body = blog.body;
+  this.markdown = blog.markdown;
   this.time = this.timeRead(this.publishedOn);
   collectedEntries.push(this);
 };
@@ -32,11 +32,10 @@ Article.prototype.timeRead = function(date) {
   return calcDay;
 };
 
+Article.prototype.template = ' ';
+
 Article.prototype.toHTML = function() {
-  var source = $('#article-template').html();
-  var template = Handlebars.compile(source);
-  var html = template(this);
-  return html;
+  return this.template(this);
 };
 
 Article.prototype.tagsDropDown = function() {
@@ -106,7 +105,7 @@ Article.prototype.truncateTable = function(callback) {
   );
 };
 
-Article.prototype.publish = function() {
-  var $template = this.toHTML();
-  $('main').append($template);
-};
+// Article.prototype.publish = function() {
+//   var $template = this.toHTML();
+//   $('main').append($template);
+// };

@@ -9,12 +9,13 @@ blog.loadArticles = function () {
       url: 'script/hackerIpsum.json',
       success: blog.fetchArticles
     });
+    console.log('ajaxGet');
   });
 };
 
 blog.fetchArticles = function(data,msg,xhr){
   var eTag = xhr.getResponseHeader('eTag');
-  if(!localStorage.articlesEtag || localStorage.articlesEtag != eTag){
+  if(typeof localStorage.articlesEtag == 'undefined' || localStorage.articlesEtag != eTag){
     console.log('cache miss!');
     localStorage.articlesEtag = eTag;
 
@@ -30,6 +31,7 @@ blog.fetchArticles = function(data,msg,xhr){
 
 blog.fetchJSON = function() {
   $.getJSON('script/hackerIpsum.json', blog.updateFromJSON);
+  console.console.log("hackerIpsum get");
 };
 
 blog.updateFromJSON = function(data) {
@@ -41,7 +43,7 @@ blog.updateFromJSON = function(data) {
   blog.initArticles();
 };
 
-blog.fetchFromDB = function() {
+blog.fetchFromDB = function(callback) {
   callback = callback || function () {};
   webDB.execute(
     'SELECT * FROM articles ORDER BY publishedOn DESC;',
@@ -56,9 +58,18 @@ blog.fetchFromDB = function() {
 };
 
 blog.initArticles = function() {
+  blog.sortRawData();
   if ($('.articles').length) {
     blog.render();
   };
+};
+
+blog.sortRawData = function() {
+  blog.articles.sort(function(a, b) {
+    if(a.publishedOn > b.publishedOn) {return -1;}
+    if(a.publishedOn < b.publishedOn) {return 1;}
+    return 0;
+  });
 };
 
 blog.render = function() {
@@ -76,20 +87,15 @@ blog.render = function() {
   article.tagsDropDown();
 };
 
+blog.appendArticle = function() {
+  $('.articles').append(new Article().toHTML());
+};
+
 blog.truncateArticles = function() {
   $('article p:not(:first-child)').hide();
-  $('.read-on').on('click', function() {
+  $('.read-on').on('click', function(event) {
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
     $(this).hide();
-  });
-};
-
-
-var sortRawData = function() {
-  blog.articles.sort(function(a, b) {
-    if(a.publishedOn > b.publishedOn) {return -1;}
-    if(a.publishedOn < b.publishedOn) {return 1;}
-    return 0;
   });
 };
