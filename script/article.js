@@ -1,6 +1,4 @@
-var collectedEntries = [];
 var blog = {};
-
 
 var Article = function(blog) {
   this.title = blog.title;
@@ -9,9 +7,8 @@ var Article = function(blog) {
   this.authorSlug = blog.author.replace(/\ /g, '');
   this.authorUrl = blog.authorUrl;
   this.publishedOn = blog.publishedOn;
-  this.markdown = blog.markdown;
+  this.body = marked(blog.markdown);
   this.time = this.timeRead(this.publishedOn);
-  collectedEntries.push(this);
 };
 
 Article.prototype.timeRead = function(date) {
@@ -42,7 +39,7 @@ Article.prototype.appendToDom = function() {
   $('#articles').append(this.toHTML());
 };
 
-Article.prototype.tagsDropDown = function() {
+Article.tagsDropDown = function() {
   var $cloneCategoryItem = $('.categoryItem').clone();
   $cloneCategoryItem.removeAttr('class');
   $cloneCategoryItem.attr('value', this.category);
@@ -60,7 +57,7 @@ Article.prototype.tagsDropDown = function() {
 };
 
 Article.truncateArticles = function() {
-  $('#articles p:not(:first-child)').hide();
+  $('articles p:not(:first-child)').hide();
   $('.read-on').on('click', function(event) {
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
@@ -81,7 +78,6 @@ Article.prototype.insertRecord = function(callback) {
 };
 
 Article.prototype.updateRecord = function(callback) {
-  //update article record in databse
   webDB.execute(
     [
       {
@@ -94,7 +90,6 @@ Article.prototype.updateRecord = function(callback) {
 };
 
 Article.prototype.deleteRecord = function(callback) {
-  // Delete article record in database
   webDB.execute(
     [
       {
@@ -107,7 +102,6 @@ Article.prototype.deleteRecord = function(callback) {
 };
 
 Article.prototype.truncateTable = function(callback) {
-  // Delete all records from given table.
   webDB.execute(
     [
       {
@@ -117,8 +111,3 @@ Article.prototype.truncateTable = function(callback) {
     callback
   );
 };
-
-// Article.prototype.publish = function() {
-//   var $template = this.toHTML();
-//   $('main').append($template);
-// };
