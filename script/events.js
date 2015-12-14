@@ -43,12 +43,6 @@ $( '.cross' ).click(function() {
 });
 
 // ----------- About page show/hide -------------------//
-$('#aboutContent').hide();
-$('#about').click(function(){
-  $('#aboutContent').show();
-  $('main').hide();
-});
-
 $('#home').click(function() {
   $('main').show();
   $('#aboutContent').hide();
