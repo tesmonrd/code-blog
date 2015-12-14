@@ -1,6 +1,6 @@
 var collectedEntries = [];
 var blog = {};
-blog.rawData = [];
+
 
 var Article = function(blog) {
   this.title = blog.title;
@@ -38,6 +38,10 @@ Article.prototype.toHTML = function() {
   return this.template(this);
 };
 
+Article.prototype.appendToDom = function() {
+  $('#articles').append(this.toHTML());
+};
+
 Article.prototype.tagsDropDown = function() {
   var $cloneCategoryItem = $('.categoryItem').clone();
   $cloneCategoryItem.removeAttr('class');
@@ -53,6 +57,15 @@ Article.prototype.tagsDropDown = function() {
   if($('#filterAuthor select').find('option[value="' + this.author + '"]').length === 0) {
     $('#filterAuthor select').append($cloneAuthorItem);
   };
+};
+
+Article.truncateArticles = function() {
+  $('#articles p:not(:first-child)').hide();
+  $('.read-on').on('click', function(event) {
+    event.preventDefault();
+    $(this).parent().find('p').fadeIn();
+    $(this).hide();
+  });
 };
 
 Article.prototype.insertRecord = function(callback) {
