@@ -3,9 +3,7 @@
 $(document).ready(function(){
   webDB.init();
   blog.loadArticles();
-
-  blog.sortRawData();
-  blog.truncateArticles();
+  Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
 });
