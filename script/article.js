@@ -7,7 +7,7 @@ var Article = function(blog) {
   this.authorSlug = blog.author.replace(/\ /g, '');
   this.authorUrl = blog.authorUrl;
   this.publishedOn = blog.publishedOn;
-  this.body = marked(blog.markdown);
+  this.markdown = marked(blog.markdown);
   this.time = this.timeRead(this.publishedOn);
 };
 
