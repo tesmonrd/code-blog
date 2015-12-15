@@ -6,6 +6,7 @@ aboutView.index = function() {
 };
 
 aboutView.render = function () {
+  $('#repoContent ul').empty();
   repos.all.forEach(function(repo){
     $('#repoContent ul').append('<li>' + repo.full_name + '</li>');
   });
