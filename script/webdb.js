@@ -37,18 +37,7 @@ webDB.connect = function (database, title, size) {
 };
 
 webDB.setupTables = function () {
-  $.get('sql/setup-tables.SQL',function(sqlStatements){
-    html5sql.process(
-      sqlStatements,
-      function() {
-        // on success
-        console.log('Success setting up tables.');
-      },
-      function(error) {
-        console.log('Error')
-      }
-    );
-  });
+  webDB.execute('CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, title VARCHAR(255) NOT NULL, author VARCHAR(255) NOT NULL, authorUrl VARCHAR (255), category VARCHAR(20), publishedOn DATETIME, markdown TEXT NOT NULL);');
 };
 
 webDB.execute = function (sql, callback) {
