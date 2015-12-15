@@ -6,4 +6,5 @@ $(document).ready(function(){
   Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
+  $('#aboutContent').hide();
 });
