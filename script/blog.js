@@ -17,9 +17,7 @@ blog.fetchArticles = function(data,msg,xhr){
   if(typeof localStorage.articlesEtag == 'undefined' || localStorage.articlesEtag != eTag){
     localStorage.articlesEtag = eTag;
     blog.articles = [];
-    webDB.execute(
-      'DELETE FROM articles;',
-      blog.fetchJSON);
+    webDB.execute('DELETE FROM articles;', blog.fetchJSON);
   } else {
     blog.fetchFromDB();
   };
