@@ -1,6 +1,7 @@
 var articleView = {};
 
 articleView.index = function() {
+  $('#aboutContent').hide();
   var _renderAll = function() {
     $articles = $('#articles');
     $articles.show().siblings().hide();
@@ -12,14 +13,9 @@ articleView.index = function() {
   if (articleView.template) {
     _renderAll();
   } else {
-    $.get('article.html', function(data, msg, xhr) {
+    $.get('template.html', function(data, msg, xhr) {
       articleView.template = Handlebars.compile(data);
       _renderAll();
     });
   }
-};
-
-articleView.render = function(article) {
-
-  return articleView.template(article);
 };
