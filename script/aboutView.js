@@ -7,13 +7,15 @@ aboutView.index = function() {
 
 aboutView.render = function () {
   repos.all.forEach(function(repo){
-    $('#aboutContent ul').append('<li>' + repo.full_name + '</li>');
+    $('#repoContent ul').append('<li>' + repo.full_name + '</li>');
   });
 };
 
 aboutView.ui = function() {
   var $about = $('#aboutContent');
-  var $ul = $about.find('ul');
+  var $repo = $('#repoContent');
+  var $ul = $repo.find('ul');
   $('#articles').hide();
   $about.fadeIn();
+  $repo.fadeIn();
 };
