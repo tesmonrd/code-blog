@@ -41,9 +41,3 @@ $( '.cross' ).click(function() {
     $( '.hamburger' ).show();
   });
 });
-
-// ----------- About page show/hide -------------------//
-$('#home').click(function() {
-  $('main').show();
-  $('#aboutContent').hide();
-});
