@@ -3,6 +3,7 @@
 $(document).ready(function(){
   webDB.init();
   blog.loadArticles();
+  Article.tagsDropDown();
   Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
