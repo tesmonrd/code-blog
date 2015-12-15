@@ -4,7 +4,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poiret+One|Amatic+SC' rel='stylesheet' type='text/css'>
     <script src="jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
-    <link rel="stylesheet" type="text/CSS" href="styles/style.css">
+    <link rel="stylesheet" type="text/CSS" href="/styles/style.css">
     <title>Rick's Blog</title>
   </head>
 
@@ -16,8 +16,8 @@
       <nav>
         <div class="menu">
           <ul>
-            <li id="home"><img class="tab" src="images/Home.png">Home</li>
-            <li id="about"><img class="tab" src="images/About.png">About</li>
+            <li><a href="/"><img src="images/Home.png">Home</a></li>
+            <li><a href="/about"><img src="images/About.png">About</a></li>
             <li><a href="https://www.linkedin.com/in/richardtesmond" target="_blank"><img class="tab" src="images/Linkedin.png">Linkedin</a></li>
             <li><a href="https://github.com/tesmonrd" target="_blank"><img class="tab" src="images/Github.png">Github</a></li>
           </ul>
@@ -46,15 +46,25 @@
       </ul>
       </span>
       <main>
-
+        <div id="articles"></div>
       </main>
       <footer>
 
       </footer>
     </div>
   </body>
-  <script src="script/article.js"></script>
-  <script src="script/hackerIpsum.json"></script>
-  <script src="script/events.js"></script>
-  <script src="script/index.js"></script>
+  <script src="/script/hackerIpsum.json"></script>
+  <script src="/script/page.js"></script>
+  <script src="/script/article.js"></script>
+  <script src="/script/blog.js"></script>
+  <script src="/script/html5sql.js"></script>
+  <script src="/script/webdb.js"></script>
+  <script src="/script/events.js"></script>
+  <script src="/script/index.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script src="/script/articleView.js"></script>
+  <script src="/script/aboutController.js"></script>
+  <script src="/script/router.js"></script>
+
 </html>

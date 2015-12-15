@@ -1,6 +1,6 @@
 /*------------- BASE ---------*/
 body {
-  background-image: url("images/background.jpg");
+  background: white;
   background-repeat: repeat;
   background-attachment: fixed;
 }
@@ -28,6 +28,7 @@ li {
 h3 h4 h5 h6 {
   font-family: 'Amatic SC', cursive;
 }
+
 /*------------- LAYOUT ---------*/
 header {
   max-width:100%;
@@ -132,7 +133,7 @@ a {
   	height: 2em;
   	fill: currentColor;
   }
-  /*nav ul{
+  li {
     display: inline-block;
-  }*/
+  }
 }

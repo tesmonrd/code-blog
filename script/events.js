@@ -22,15 +22,6 @@ var sortByCategory = function(event) {
   }
 };
 
-blog.truncateArticles = function() {
-  $('article p:not(:first-child)').hide();
-  $('.read-on').on('click', function() {
-    event.preventDefault();
-    $(this).parent().find('p').fadeIn();
-    $(this).hide();
-  });
-};
-
 // ------------ HAMBURGER-CROSS CLICK FUNCTION ----------//
 
 $( '.hamburger' ).click(function() {
@@ -49,16 +40,4 @@ $( '.cross' ).click(function() {
     $( '.cross' ).hide();
     $( '.hamburger' ).show();
   });
-});
-
-// ----------- About page show/hide -------------------//
-$('#aboutContent').hide();
-$('#about').click(function(){
-  $('#aboutContent').show();
-  $('main').hide();
-});
-
-$('#home').click(function() {
-  $('main').show();
-  $('#aboutContent').hide();
 });

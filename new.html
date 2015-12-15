@@ -57,7 +57,11 @@
           Text here:
         </p>
         <textarea id="body" rows="8" cols="40"></textarea>
-        <input type="submit">
+        <ul id="editorButtons">
+          <li><input type="submit"></li>
+          <li><button id="edit">Edit</button></li>
+          <li><button id="delete">Delete</button></li>
+        </ul>
       </form>
       <div id="sampleArticle"></div>
       <span id="copy-code"></span>
@@ -68,5 +72,7 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
-  <script src="script/hidden.js"></script>
+  <script src="script/html5sql.js"></script>
+  <script src="script/webdb.js"></script>
+  <script src="script/new.js"></script>
 </html>

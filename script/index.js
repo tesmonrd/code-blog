@@ -1,8 +1,10 @@
 // ----------- Function Calls ---------------//
+// Get a publish articles call for the index page
 $(document).ready(function(){
-  sortRawData();
-  buildArticle();
-  blog.truncateArticles();
+  webDB.init();
+  blog.loadArticles();
+  Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
+  $('#aboutContent').hide();
 });

@@ -1,6 +1,4 @@
-var collectedEntries = [];
 var blog = {};
-blog.rawData = [];
 
 var Article = function(blog) {
   this.title = blog.title;
@@ -9,9 +7,8 @@ var Article = function(blog) {
   this.authorSlug = blog.author.replace(/\ /g, '');
   this.authorUrl = blog.authorUrl;
   this.publishedOn = blog.publishedOn;
-  this.body = blog.body;
+  this.markdown = marked(blog.markdown);
   this.time = this.timeRead(this.publishedOn);
-  collectedEntries.push(this);
 };
 
 Article.prototype.timeRead = function(date) {
@@ -32,13 +29,17 @@ Article.prototype.timeRead = function(date) {
   return calcDay;
 };
 
+Article.prototype.template = ' ';
+
 Article.prototype.toHTML = function() {
-  // var time = this.timeRead(this.publishedOn);
-  var html = (this);
-  return html;
+  return this.template(this);
 };
 
-Article.prototype.tagsDropDown = function() {
+Article.prototype.appendToDom = function() {
+  $('#articles').append(this.toHTML());
+};
+
+Article.tagsDropDown = function() {
   var $cloneCategoryItem = $('.categoryItem').clone();
   $cloneCategoryItem.removeAttr('class');
   $cloneCategoryItem.attr('value', this.category);
@@ -55,27 +56,58 @@ Article.prototype.tagsDropDown = function() {
   };
 };
 
-Article.prototype.publish = function() {
-  var $template = this.toHTML();
-  $('main').append($template);
-};
-
-var source = $.get('script/template.handlebars', function(data) {
-  Article.prototype.template = Handlebars.compile(data);
-});
-
-var sortRawData = function() {
-  blog.rawData.sort(function(a, b) {
-    if(a.publishedOn > b.publishedOn) {return -1;}
-    if(a.publishedOn < b.publishedOn) {return 1;}
-    return 0;
+Article.truncateArticles = function() {
+  $('articles p:not(:first-child)').hide();
+  $('.read-on').on('click', function(event) {
+    event.preventDefault();
+    $(this).parent().find('p').fadeIn();
+    $(this).hide();
   });
 };
 
-var buildArticle = function () {
-  for(var i = 0; i < blog.rawData.length; i++) {
-    var blogPost = new Article(blog.rawData[i]);
-    blogPost.publish();
-    blogPost.tagsDropDown();
-  }
+Article.prototype.insertRecord = function(callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'INSERT INTO articles (title, category, author, authorUrl, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown],
+      }
+    ],
+    callback
+  );
+};
+
+Article.prototype.updateRecord = function(callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'UPDATE articles SET title = ?, category = ?, author = ?, authorUrl = ?, publishedOn = ?, markdown = ?, WHERE id= ?;',
+        'data': [this.title, this.category,this.author, this.authorUrl, this.publishedOn, this.markdown, article.id],
+      }
+    ],
+    callback
+  );
+};
+
+Article.prototype.deleteRecord = function(callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'DELETE FROM articles WHERE id= ?;',
+        'data': [article.id],
+      }
+    ],
+    callback
+  );
+};
+
+Article.prototype.truncateTable = function(callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'DELETE FROM articles;'
+      }
+    ],
+    callback
+  );
 };
