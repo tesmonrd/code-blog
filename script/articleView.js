@@ -2,6 +2,7 @@ var articleView = {};
 
 articleView.index = function() {
   $('#aboutContent').hide();
+  $('#repoContent').hide();
   var _renderAll = function() {
     $articles = $('#articles');
     $articles.show().siblings().hide();
