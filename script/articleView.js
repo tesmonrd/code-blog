@@ -1,27 +1,17 @@
 var articleView = {};
 
 articleView.index = function() {
+  $('#articles').show();
   $('#aboutContent').hide();
   $('#repoContent').hide();
-  var _renderAll = function() {
-    $articles = $('#articles');
-    $articles.show();
-    blog.articles.forEach(function(article) {
-      $articles.append(articleView.render(article));
-    });
-  };
-
-  if (articleView.template) {
-    _renderAll();
-  } else {
-    $.get('template.html', function(data, msg, xhr) {
-      articleView.template = Handlebars.compile(data);
-      _renderAll();
-    });
-  }
+  $.get('template.html', function(data, msg, xhr) {
+    articleView.template = Handlebars.compile(data);
+  });
 };
 
-articleView.render = function(article) {
-
-  return articleView.template();
+articleView.render = function() {
+  $('#articles').empty();
+  blog.articles.forEach(function(article) {
+    $('#articles').append(articleView.template(this));
+  });
 };
