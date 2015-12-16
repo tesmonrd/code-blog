@@ -5,9 +5,9 @@ articleView.index = function() {
   $('#repoContent').hide();
   var _renderAll = function() {
     $articles = $('#articles');
-    $articles.show().siblings().hide();
-    Article.all.forEach(function(article) {
-      $articles.append(article.appendToDom());
+    $articles.show();
+    blog.articles.forEach(function(article) {
+      $articles.append(articleView.render(article));
     });
   };
 
@@ -20,3 +20,8 @@ articleView.index = function() {
     });
   }
 };
+
+articleView.render = function(article) {
+
+  return articleView.template()
+}
