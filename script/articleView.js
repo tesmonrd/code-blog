@@ -23,5 +23,5 @@ articleView.index = function() {
 
 articleView.render = function(article) {
 
-  return articleView.template()
-}
+  return articleView.template();
+};

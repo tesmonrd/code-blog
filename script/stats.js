@@ -39,7 +39,7 @@ stats.displayWordCount = function() {
 // -----------------------------------------------------------------//
 stats.wordCount = function(str) {
   return str.replace(/[#,\n]/g,' ').match(/\b\w+/g);
-}
+};
 
 // -----------------------------------------------------------------//
 stats.displayAveWordCount = function() {
