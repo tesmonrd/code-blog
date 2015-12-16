@@ -57,11 +57,11 @@ Article.tagsDropDown = function() {
 };
 
 Article.truncateArticles = function() {
-  $('articles p:not(:first-child)').hide();
+  $('#articles p:not(:first-child)').hide();
   $('.read-on').on('click', function(event) {
     event.preventDefault();
     $(this).parent().find('p').fadeIn();
-    $(this).hide();
+    // $(this).hide();
   });
 };
 
