@@ -1,8 +1,7 @@
 // ----------- Function Calls ---------------//
-// Get a publish articles call for the index page
 $(document).ready(function(){
   webDB.init();
-  // blog.loadArticles();
+  Article.loadAll();
   Article.tagsDropDown();
   Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
