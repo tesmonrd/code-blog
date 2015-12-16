@@ -1,4 +1,4 @@
-page('/', articleView.index);
+page('/', articlesController.index);
 
 page('/about', aboutController.index);
 
