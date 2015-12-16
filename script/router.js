@@ -1,5 +1,5 @@
-page('/about', aboutController.index);
+page('/', articlesController.index);
 
-page('/', articleView.index);
+page('/about', aboutController.index);
 
 page.start();
