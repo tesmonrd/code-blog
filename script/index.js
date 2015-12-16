@@ -8,4 +8,5 @@ $(document).ready(function(){
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
   $('#aboutContent').hide();
+  $('#repoContent').hide();
 });
