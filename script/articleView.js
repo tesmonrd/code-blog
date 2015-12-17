@@ -1,27 +1,28 @@
 var articleView = {};
 
+
+articleView.renderGroup = function(articleList) {
+  $articles = $('#articles');
+  $articles.fadeIn().siblings().hide();
+  Article.all.forEach(function(article) {
+    $articles.append(articleView.render(article));
+  });
+};
+articleView.loadTemplate = function(articles) {
+  $.get('template.html', function(data, msg, xhr) {
+    articleView.template = Handlebars.compile(data);
+    articleView.renderGroup(articles);
+    console.log("template get");
+  });
+};
+
 articleView.index = function() {
   $('#aboutContent').hide();
   $('#repoContent').hide();
   $('#articles').empty();
   $('#articles').show();
-  var _renderAll = function() {
-    $articles = $('#articles');
-    $articles.fadeIn().siblings().hide();
-    Article.all.forEach(function(article) {
-      $articles.append(articleView.render(article));
-    });
-    Article.truncateArticles();
-  };
-
-  if (articleView.template) {
-    _renderAll();
-  } else {
-    $.get('template.html', function(data, msg, xhr) {
-      articleView.template = Handlebars.compile(data);
-      _renderAll();
-    }).done();
-  }
+  Article.truncateArticles();
+  articleView.loadTemplate(Article.all);
 };
 
 articleView.render = function(article) {
