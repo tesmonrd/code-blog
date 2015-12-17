@@ -84,6 +84,30 @@ Article.truncateArticles = function() {
   });
 };
 
+Article.findByCategory = function(category, callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'SELECT * FROM articles WHERE category = ?',
+        'data': [category]
+      }
+    ],
+    callback
+  );
+};
+
+Article.findByAuthor = function(author, callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'SELECT * FROM articles WHERE author = ?',
+        'data': [author]
+      }
+    ],
+    callback
+  );
+};
+
 Article.find = function(id, callback) {
   webDB.execute(
     [
