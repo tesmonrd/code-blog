@@ -8,11 +8,17 @@ articleView.renderGroup = function(articleList) {
     $articles.append(articleView.render(article));
   });
 };
-articleView.loadTemplate = function(articles) {
-  $.get('template.html', function(data, msg, xhr) {
-    articleView.template = Handlebars.compile(data);
-    articleView.renderGroup(articles);
-  });
+
+
+articleView.render = function(article) {
+  article.daysAgo =
+    parseInt((new Date() - new Date(article.publishedOn))/60/60/24/1000);
+
+  article.publishStatus = article.publishedOn ? 'published ' + article.daysAgo + ' days ago' : '(draft)';
+  article.authorSlug = article.author.replace(/\W/g, '-');
+  article.category = article.category;
+
+  return articleView.template(article);
 };
 
 articleView.index = function() {
@@ -20,30 +26,24 @@ articleView.index = function() {
   $('#repoContent').hide();
   $('#articles').empty();
   $('#articles').show();
-  articleView.loadTemplate(Article.all);
+  articleView.renderGroup(Article.all);
   articleView.categoryPopulate();
   articleView.authorPopulate();
   Article.truncateArticles();
 };
 
-articleView.render = function(article) {
-  article.daysAgo =
-    parseInt((new Date() - new Date(article.publishedOn))/60/60/24/1000);
-
-  article.publishStatus = article.publishedOn ? 'published ' + article.daysAgo + ' days ago' : '(draft)';
-  article.authorSlug = article.author;
-  article.category = article.category;
-
-  return articleView.template(article);
+articleView.show = function(articles) {
+  articleView.renderGroup(articles);
 };
 
+//------------------- Filter Functions -----------------//
 articleView.authorPopulate = function() {
   Article.all.forEach(function(article){
     var $cloneAuthorItem = $('.authorItem').clone();
     $cloneAuthorItem.removeAttr('class');
-    $cloneAuthorItem.attr('value', article.author);
+    $cloneAuthorItem.attr('value', article.authorSlug);
     $cloneAuthorItem.text(article.author);
-    if($('#filterAuthor select').find('option[value="' + article.author + '"]').length === 0) {
+    if($('#filterAuthor select').find('option[value="' + article.authorSlug + '"]').length === 0) {
       $('#filterAuthor select').append($cloneAuthorItem);
     };
   });
