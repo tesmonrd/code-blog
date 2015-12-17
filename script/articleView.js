@@ -1,15 +1,17 @@
 var articleView = {};
 
 articleView.index = function() {
-  $('#articles').show();
   $('#aboutContent').hide();
   $('#repoContent').hide();
+  $('#articles').empty();
+  $('#articles').show();
   var _renderAll = function() {
     $articles = $('#articles');
     $articles.fadeIn().siblings().hide();
     Article.all.forEach(function(article) {
       $articles.append(articleView.render(article));
     });
+    Article.truncateArticles();
   };
 
   if (articleView.template) {
@@ -18,7 +20,7 @@ articleView.index = function() {
     $.get('template.html', function(data, msg, xhr) {
       articleView.template = Handlebars.compile(data);
       _renderAll();
-    });
+    }).done();
   }
 };
 
