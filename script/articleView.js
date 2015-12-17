@@ -12,7 +12,6 @@ articleView.loadTemplate = function(articles) {
   $.get('template.html', function(data, msg, xhr) {
     articleView.template = Handlebars.compile(data);
     articleView.renderGroup(articles);
-    console.log("template get");
   });
 };
 
@@ -21,8 +20,10 @@ articleView.index = function() {
   $('#repoContent').hide();
   $('#articles').empty();
   $('#articles').show();
-  Article.truncateArticles();
   articleView.loadTemplate(Article.all);
+  articleView.categoryPopulate();
+  articleView.authorPopulate();
+  Article.truncateArticles();
 };
 
 articleView.render = function(article) {
@@ -34,4 +35,28 @@ articleView.render = function(article) {
   article.category = article.category;
 
   return articleView.template(article);
+};
+
+articleView.authorPopulate = function() {
+  Article.all.forEach(function(article){
+    var $cloneAuthorItem = $('.authorItem').clone();
+    $cloneAuthorItem.removeAttr('class');
+    $cloneAuthorItem.attr('value', article.author);
+    $cloneAuthorItem.text(article.author);
+    if($('#filterAuthor select').find('option[value="' + article.author + '"]').length === 0) {
+      $('#filterAuthor select').append($cloneAuthorItem);
+    };
+  });
+};
+
+articleView.categoryPopulate = function() {
+  Article.all.forEach(function(article){
+    var $cloneCategoryItem = $('.categoryItem').clone();
+    $cloneCategoryItem.removeAttr('class');
+    $cloneCategoryItem.attr('value', article.category);
+    $cloneCategoryItem.text(article.category);
+    if($('#filterCategory select').find('option[value="' + article.category + '"]').length === 0) {
+      $('#filterCategory select').append($cloneCategoryItem);
+    }
+  });
 };
