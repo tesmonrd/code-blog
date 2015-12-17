@@ -93,11 +93,11 @@ Article.tagsDropDown = function() {
 };
 
 Article.truncateArticles = function() {
-  $('#articles p:not(:first-child)').hide();
+  $('.body').children(':nth-child(n+5)').hide();
   $('.read-on').on('click', function(event) {
     event.preventDefault();
-    $(this).parent().find('p').fadeIn();
-    // $(this).hide();
+    $(this).prev('.body').children().show();
+    $(this).hide();
   });
 };
 
