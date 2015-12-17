@@ -75,23 +75,6 @@ Article.loadAll = function(callback) {
   }
 };
 
-Article.tagsDropDown = function() {
-  var $cloneCategoryItem = $('.categoryItem').clone();
-  $cloneCategoryItem.removeAttr('class');
-  $cloneCategoryItem.attr('value', this.category);
-  $cloneCategoryItem.text(this.category);
-  if($('#filterCategory select').find('option[value="' + this.category + '"]').length === 0) {
-    $('#filterCategory select').append($cloneCategoryItem);
-  }
-  var $cloneAuthorItem = $('.authorItem').clone();
-  $cloneAuthorItem.removeAttr('class');
-  $cloneAuthorItem.attr('value', this.author);
-  $cloneAuthorItem.text(this.author);
-  if($('#filterAuthor select').find('option[value="' + this.author + '"]').length === 0) {
-    $('#filterAuthor select').append($cloneAuthorItem);
-  };
-};
-
 Article.truncateArticles = function() {
   $('.body').children(':nth-child(n+5)').hide();
   $('.read-on').on('click', function(event) {
