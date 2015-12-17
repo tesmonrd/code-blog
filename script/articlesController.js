@@ -1,6 +1,5 @@
 var articlesController = {};
 
 articlesController.index = function() {
-  (articleView.index);
+  Article.loadAll(articleView.index);
 };
-// clear on load... once it works

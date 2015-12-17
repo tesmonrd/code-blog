@@ -133,7 +133,11 @@ a {
   	height: 2em;
   	fill: currentColor;
   }
-  li {
+  .menu li {
     display: inline-block;
+  }
+  li {
+    list-style-type: none;
+    position:relative;
   }
 }
