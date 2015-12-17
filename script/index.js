@@ -1,9 +1,8 @@
 // ----------- Function Calls ---------------//
 $(document).ready(function(){
   webDB.init();
-  Article.loadAll();
+  articlesController.index();
   Article.tagsDropDown();
-  Article.truncateArticles();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
   $('#aboutContent').hide();
