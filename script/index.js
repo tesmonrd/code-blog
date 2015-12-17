@@ -3,6 +3,4 @@ $(document).ready(function(){
   webDB.init();
   $('#filterAuthor').change(sortByAuthor);
   $('#filterCategory').change(sortByCategory);
-  $('#aboutContent').hide();
-  $('#repoContent').hide();
 });
