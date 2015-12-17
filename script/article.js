@@ -113,6 +113,18 @@ Article.find = function(id, callback) {
   );
 };
 
+Article.findByCategory = function(category, callback) {
+  webDB.execute(
+    [
+      {
+        'sql': 'SELECT * FROM articles WHERE category = ?',
+        'data': [category]
+      }
+    ],
+    callback
+  );
+};
+
 Article.prototype.truncateTable = function(callback) {
   webDB.execute(
     [
