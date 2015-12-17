@@ -2,11 +2,11 @@ var articleView = {};
 
 
 articleView.renderGroup = function(articleList) {
-  $articles = $('#articles');
-  $articles.fadeIn().siblings().hide();
-  Article.all.forEach(function(article) {
-    $articles.append(articleView.render(article));
-  });
+  $('#articles').fadeIn().append(
+    articleList.map(function(a){
+      return articleView.render(a);
+    })
+  );
 };
 
 
