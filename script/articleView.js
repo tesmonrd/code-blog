@@ -47,6 +47,9 @@ articleView.authorPopulate = function() {
       $('#filterAuthor select').append($cloneAuthorItem);
     };
   });
+  $('#select-Author').on('change', function() {
+    page('/author/' + $(this).val());
+  });
 };
 
 articleView.categoryPopulate = function() {
