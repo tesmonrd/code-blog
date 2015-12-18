@@ -8,7 +8,7 @@ articlesController.template = function(ctx, next) {
   if(articleView.template) {
     next();
   } else {
-    $.get('template.html', function(data, msg, xhr) {
+    $.get('/template.html', function(data, msg, xhr) {
       articleView.template = Handlebars.compile(data);
       next();
     }).done();
