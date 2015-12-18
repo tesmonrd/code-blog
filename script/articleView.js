@@ -47,6 +47,9 @@ articleView.authorPopulate = function() {
       $('#filterAuthor select').append($cloneAuthorItem);
     };
   });
+  $('#select-Author').on('change', function() {
+    page('/author/' + $(this).val());
+  });
 };
 
 articleView.categoryPopulate = function() {
@@ -58,5 +61,8 @@ articleView.categoryPopulate = function() {
     if($('#filterCategory select').find('option[value="' + article.category + '"]').length === 0) {
       $('#filterCategory select').append($cloneCategoryItem);
     }
+  });
+  $('#category').on('change', function() {
+    page('/category/' + $(this).val());
   });
 };
