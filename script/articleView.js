@@ -59,4 +59,7 @@ articleView.categoryPopulate = function() {
       $('#filterCategory select').append($cloneCategoryItem);
     }
   });
+  $('#category').on('change', function() {
+    page('/category/' + $(this).val());
+  });
 };
