@@ -33,4 +33,7 @@ articlesController.author = function(ctx, next) {
 
 articlesController.show = function(ctx, next) {
   articleView.show(ctx.articles);
+  $('#aboutContent').hide();
+  $('#repoContent').hide();
+  Article.truncateArticles();
 };
